@@ -103,30 +103,31 @@ def selection_sort():
 
 
 def menu():
-    header = "    sorting.py Menu     "
-    print(f"{header}\n{'-'*len(header)}")
+    while True:
+        header = "    sorting.py Menu     "
+        print(f"{header}\n{'-'*len(header)}")
+        
+        menu_choice = input(
+    """Make a Selection:
+    1.Bubble Sort
+    2.Insertion Sort
+    3.Selection Sort
+    x.exit
+    """)
+        
+        match menu_choice.lower().strip():
+            case '1':
+                bubble_sort()
+            case '2':
+                insertion_sort()
+            case '3':
+                selection_sort()
+            case 'x':
+                return
+            case _:
+                print("Invalid choice")
+        
     
-    menu_choice = input(
-"""Make a Selection:
-1.Bubble Sort
-2.Insertion Sort
-3.Selection Sort
-x.exit
-""")
-    
-    match menu_choice.lower():
-        case '1':
-            bubble_sort()
-        case '2':
-            insertion_sort()
-        case '3':
-            selection_sort()
-        case 'x':
-            return False
-        case _:
-            print("Invalid choice")
-    
-    return True
 
     
 if __name__ == "__main__":

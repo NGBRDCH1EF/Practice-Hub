@@ -1,4 +1,5 @@
 import sorting
+import rng
 
 def menu():
     header = "     Menu     "
@@ -7,12 +8,15 @@ def menu():
     menu_choice = input(
 """Make a Selection:
 1.Sorting
+2.Number Guessing Game
 x.exit
 """)
     
-    match menu_choice.lower():
+    match menu_choice.lower().strip():
         case '1':
             sorting.menu()
+        case '2':
+            rng.menu()
         case 'x':
             return False
         case _:
