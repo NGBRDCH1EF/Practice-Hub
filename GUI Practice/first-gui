@@ -1,0 +1,12 @@
+from tkinter import *
+
+root = Tk()
+
+l1 = Label(root, text = "It's a GUI")
+
+l1.pack()
+
+root.mainloop()
+
+
+    
