@@ -45,29 +45,47 @@ def bubble_sort() -> list:
     return nums
     
 def insertion_sort():
+
     nums = get_nums()
-    sorted_nums = []
-    sorted_nums.append(nums.pop(0))
+    if not nums:
+        print("Cannot sort empty list")
+        return []
+
+    sorted_nums = [nums.pop(0)]
     steps = 0
+
     while nums:
         inserted = False
+        current = nums[0]
+
         for i in range(len(sorted_nums)):
-            if nums[0] < sorted_nums[i]:
-                sorted_nums.insert(i,nums.pop(0))
-                inserted = True
+            if current < sorted_nums[i]:
+                sorted_nums.insert(i, nums.pop(0))
                 steps += 1
+                highlighted = "[ " + " , ".join(
+                    f"{BLUE}{v}{RESET}" if idx == i else str(v)
+                    for idx, v in enumerate(sorted_nums)
+                ) + " ]"
+                divider = "-" * (len(nums) + len(sorted_nums))
+                print(f"{highlighted} <{divider} {nums}")
+                inserted = True
                 break
+
         if not inserted:
             sorted_nums.append(nums.pop(0))
-            steps += 1 
-        if len(nums)>0:
-            print(f"{sorted_nums}<{"-"*(len(nums)+len(sorted_nums))}{nums}")
+            steps += 1
+            last_idx = len(sorted_nums) - 1
+            highlighted = "[ " + " , ".join(
+                f"{BLUE}{v}{RESET}" if idx == last_idx else str(v)
+                for idx, v in enumerate(sorted_nums)
+            ) + " ]"
+            divider = "-" * (len(nums) + len(sorted_nums))
+            print(f"{highlighted} <{divider} {nums}")
 
-    print(f"{GREEN}Final Results: {sorted_nums}\nSteps Taken: {steps}{RESET}")
-
+    print(f"Final Results: {sorted_nums}\nSteps Taken: {steps}")
     return sorted_nums
 
-            
+ 
 
 
 def menu():
@@ -78,6 +96,7 @@ def menu():
 """Make a Selection:
 1.Bubble Sort
 2.Insertion Sort
+3.Selection Sort
 x.exit
 """)
     
