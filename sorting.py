@@ -67,7 +67,7 @@ def insertion_sort():
                     for idx, v in enumerate(sorted_nums)
                 ) + " ]"
                 divider = "-" * (len(nums) + len(sorted_nums))
-                print(f"{highlighted} <{divider} {nums}")
+                print(f"{highlighted}")
                 inserted = True
                 break
 
@@ -79,14 +79,14 @@ def insertion_sort():
                 f"{BLUE}{v}{RESET}" if idx == last_idx else str(v)
                 for idx, v in enumerate(sorted_nums)
             ) + " ]"
-            divider = "-" * (len(nums) + len(sorted_nums))
-            print(f"{highlighted} <{divider} {nums}")
+            print(f"{highlighted}")
 
     print(f"Final Results: {sorted_nums}\nSteps Taken: {steps}")
     return sorted_nums
 
  
-
+def selection_sort():
+    nums = get_nums()
 
 def menu():
     header = "     Menu     "
@@ -105,6 +105,8 @@ x.exit
             bubble_sort()
         case '2':
             insertion_sort()
+        case '3':
+            selection_sort()
         case 'x':
             return False
         case _:
