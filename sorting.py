@@ -103,7 +103,7 @@ def selection_sort():
 
 
 def menu():
-    header = "     Menu     "
+    header = "    sorting.py Menu     "
     print(f"{header}\n{'-'*len(header)}")
     
     menu_choice = input(
@@ -129,5 +129,6 @@ x.exit
     return True
 
     
-while menu():
-    menu()
+if __name__ == "__main__":
+    while menu():
+        pass
