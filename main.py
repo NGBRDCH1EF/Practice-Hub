@@ -1,5 +1,9 @@
 import sorting
 import rng
+import first
+import anagram
+import palindrome
+import prime_numbers
 
 def menu():
     header = "     Menu     "
@@ -9,6 +13,10 @@ def menu():
 """Make a Selection:
 1.Sorting
 2.Number Guessing Game
+3.My first script
+4.Anagrams
+5.Palindromes
+6.Prime numbers
 x.exit
 """)
     
@@ -17,6 +25,14 @@ x.exit
             sorting.menu()
         case '2':
             rng.menu()
+        case '3':
+            first.menu()
+        case '4':
+            anagram.menu()
+        case '5':
+            palindrome.menu()
+        case '6':
+            prime_numbers.menu()
         case 'x':
             return False
         case _:
