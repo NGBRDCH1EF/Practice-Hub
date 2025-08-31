@@ -87,6 +87,20 @@ def insertion_sort():
  
 def selection_sort():
     nums = get_nums()
+    
+    for fix_idx in range(len(nums)):
+        min_idx = fix_idx
+        for check_idx in range(fix_idx+1,(len(nums))):
+            if nums[check_idx] < nums[min_idx]: 
+                min_idx = check_idx    #find lowest in unsorted                           
+        
+        nums[fix_idx],nums[min_idx] =nums[min_idx],nums[fix_idx]    #swap fix with min
+        print("[ " + " , ".join(f"{BLUE}{val}{RESET}" if idx == fix_idx else str(val)for idx, val in enumerate(nums)) + " ]"
+)
+
+            
+
+
 
 def menu():
     header = "     Menu     "
