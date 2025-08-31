@@ -2,9 +2,15 @@ from tkinter import *
 
 root = Tk()
 
-l1 = Label(root, text = "It's a GUI")
+e1 = Entry(root)
+e1.pack()
 
-l1.pack()
+def click():
+    l1 = Label(root,text=e1.get())
+    l1.pack()
+
+b1 = Button(root,text="Click the button!".upper(),padx=75,pady=75,command=click)
+b1.pack()
 
 root.mainloop()
 
