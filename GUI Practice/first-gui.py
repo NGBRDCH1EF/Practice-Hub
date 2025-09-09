@@ -8,8 +8,18 @@ root.resizable(False, False)
 field = Entry(root, width=20, font=("Segoe UI", 18), justify="right")
 field.grid(row=0, column=0, columnspan=5, padx=8, pady=8)
 
+def back_key():
+    length = len(field.get())
+    if length > 0:
+        field.delete(length - 1, END)
+
+def clear_key():
+    field.delete(0,END)
+
+
 def click(x):
     field.insert("end",x)
+
 
 
 button1 = Button(padx=20, pady=20, text="1", command=lambda: click("1")); button1.grid(row=4, column=1)
@@ -28,9 +38,25 @@ button_multiply = Button(padx=20, pady=20, text="x", command=lambda: click("x"))
 button_minus = Button(padx=20, pady=20, text="-", command=lambda: click("-")); button_minus.grid(row=2, column=4)
 button_add = Button(padx=20, pady=20, text="+", command=lambda: click("+")); button_add.grid(row=3, column=4)
 button_equal = Button(padx=20, pady=50, text="=", command=lambda: click("=")); button_equal.grid(row=4, column=4, rowspan=2)
-button_clear = Button(padx=20, pady=20, text="C", command=lambda: click("C")); button_clear.grid(row=1, column=1)
-button_back = Button(padx=20, pady=20, text="<-", command=lambda: click("<-")); button_back.grid(row=1, column=4)
+button_clear = Button(padx=20, pady=20, text="C", command=clear_key); button_clear.grid(row=1, column=1)
+button_back = Button(padx=20, pady=20, text="<-", command=back_key); button_back.grid(row=1, column=4)
 
+root.bind("<BackSpace>", lambda event: back_key())
+
+#KEYBINDS
+for i in range(10):
+    root.bind(str(i), lambda event, digit=str(i): click(digit))
+for i in range(10):
+    root.bind(f"<KP_{i}>", lambda e, d=str(i): field.insert(END, d))
+root.bind("+", lambda event: click("+"))
+root.bind("-", lambda event: click("-"))
+root.bind("*", lambda event: click("x"))
+root.bind("/", lambda event: click("/"))
+root.bind("<KP_Add>",      lambda e: field.insert(END, "+"))
+root.bind("<KP_Subtract>", lambda e: field.insert(END, "-"))
+root.bind("<KP_Multiply>", lambda e: field.insert(END, "x"))
+root.bind("<KP_Divide>",   lambda e: field.insert(END, "/"))
+root.bind("<Escape>", lambda event: clear_key())
 
 
 root.mainloop()
